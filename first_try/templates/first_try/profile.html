@@ -1,0 +1,27 @@
+{% extends 'first_try/base.html' %}
+{% load static %}
+
+{% block top_bar_black %}
+    <div id="top_bar_black"> 
+      <div id="logo_container"> 
+        <div id="logo_image"> </div>  
+        <div id="nav_block"> 
+        <div class="nav_button"><a href={% url 'main' %}>Main</a></div>
+        <div class="nav_button"><a href=""> About</a></div>
+        </div>
+      </div> 
+    </div>
+{% endblock top_bar_black %}
+
+{% block content_container %}
+    <div id="content_container">
+      <div id="rectangle">
+        
+      </div>
+
+    </div>
+{% endblock content_container %}
+
+
+
+

@@ -1,0 +1,31 @@
+{% load static %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Anitiming</title>
+  <link href={% static 'vendor/css/stylesheet.css' %} rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/0734cd974a.js" crossorigin="anonymous"></script>
+  {% block css %} {% endblock %}
+</head>
+
+<body>
+    {% block top_bar_black %} {% endblock %}
+          
+    {% block content_container %} {% endblock %}
+           
+    
+    <div id="bottom_bar_black">
+      <ul>
+        <li><a href="https://www.instagram.com/y.e.v.g.a.k.i.m9/" target="_blank"><i class="fa-brands fa-instagram instagram"></i></a></li>
+        <li><a href="https://github.com/YevgaKim" target="_blank"><i class="fa-brands fa-github github"></i></a></li>
+        <li><a href="https://t.me/yevgakim" target="_blank"><i class="fa-brands fa-telegram telegram"></i></a></li>
+      </ul> 
+    </div>
+    
+
+</body>
+</html>

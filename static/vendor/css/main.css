@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+.prokrutka {
+    height: 560px; /* высота нашего блока */
+    width: 500px; /* ширина нашего блока */
+    background: #201f1f; /* цвет фона, белый */
+    overflow-y: scroll; 
+    position: relative;
+    top: 5px;
+    left: 400px;
+}
+
+.anime{
+    height: 155px;
+    width: 475px;
+    background: #000000;
+    position: relative;
+    top: 7px;
+    left: 5px;
+    color: white;
+    border-bottom: 5px solid #201f1f;
+}
+
+.image{
+    height: 145px;
+    width: 100px;
+    top: 5px;
+    position: relative;
+    left: 2px;
+}
+
+.image_anime{
+    height: 145px;
+    width: 100px;
+    position: relative;
+    left: 2px;
+}
+
+.info{
+    height: 145px;
+    width: 345px;
+    position: relative;
+    top: -140px;
+    left: 110px;
+}
+
+.name{
+    color: white;
+    border: 3px solid black;
+    font-size: 30px;
+}
+
+.text {
+    color: white;
+    border: 3px solid black;
+}
+
+
+
+p {
+    display: block;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
