@@ -1,0 +1,65 @@
+{% extends 'first_try/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'vendor/css/log_reg.css' %}" rel="stylesheet">
+{% endblock css %}
+
+
+{% block nav_block %} 
+        <div id="nav_block"> 
+          <div class="nav_button"><a href={% url 'main' %}>Main</a></div>
+          <div class="nav_button"><a href=""> About</a></div>
+        </div> 
+{% endblock nav_block %}
+
+{% block content_container %}
+    <div id="content_container">
+      <div id="rectangle_reg">
+        <img class="face1" src={% static "vendor/images/face1.jpg"%}>
+        <div>
+          <p class="text_start_reg"><b>Registration</b></p>
+          <form class="form_reg" action="{% url 'registration'%}" method ="post">  
+            {% csrf_token %} 
+             {{form.username}}   
+            {{form.email}} 
+            <div class="password">
+              {{form.password1}} 
+              <a  href="" class="password-control" id="password1"><img src={% static 'vendor/images/eye.png' %}></a>
+            </div>    
+            <div class="password">
+              {{form.password2}} 
+              <a  href="" class="password-control" id="password2"><img src={% static 'vendor/images/eye.png' %}></a>
+            </div> 
+            
+            <button>
+              <span class="span_reg">Зарегистрироваться</span>
+              <div class="top"> </div>
+              <div class="left"></div>
+              <div class="bottom"></div>
+              <div class="right"></div>
+            </button>   
+            
+            <em class="help2">Есть аккаунт?</em><a href={% url 'login' %}>Войти</a>
+            {% if error_exists %}
+              <div class="error_invalid"><div class="text_error">Ник уже используется</div></div>
+            {% elif error_toocommon%}
+              <div class="error_invalid"><div class="text_error">Пароль слишком простой</div></div>
+            {% elif error_similiar%}
+              <div class="error_invalid"><div class="text_error">Пароли не совпадают</div></div>
+              {% elif erro_similiar_pass_username%}
+              <div class="error_invalid"><div class="text_error">Пароль и ник слишком похожие</div></div>
+            {% endif %}
+            
+          </form>
+          
+       </div>
+        
+       <img class="face2" src={% static "vendor/images/face3.jpg"%}>
+      </div>
+
+    </div>
+{% endblock content_container %}
+
+
+{%block script%}<script src={%static "vendor/js/script.js"%}></script>{%endblock script%}

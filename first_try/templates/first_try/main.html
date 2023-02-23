@@ -3,36 +3,79 @@
 
 {% block css %}
     <link href="{% static 'vendor/css/main.css' %}" rel="stylesheet">
-{% endblock %}
+{% endblock css %}
 
-{% block top_bar_black %}
-  <div id="top_bar_black"> 
-    <div id="logo_container"> 
-      <div id="logo_image"> </div>  
+{% block nav_block %}
       <div id="nav_block"> 
-      <div class="nav_button"><a href={% url 'Bio' %}>Profile</a></div>
-      <div class="nav_button"><a href=""> About</a></div>
+        {% if user.is_authenticated%}
+          <div class="nav_button"><a href={% url "Bio"%}>{{user.username}}</a></div>
+        {% else %}
+          <div class="nav_button_log_reg"><a href={% url "login"%}>Login</a>|<a href={% url "registration"%}>Registration</a></div>
+        {% endif %}
+        <div class="nav_button"><a href=""> About</a></div>
       </div>
-    </div> 
-  </div>
-{% endblock top_bar_black %}
+{% endblock nav_block %}
 
 {% block content_container %}
-    <div id="content_container">
-      <div id="rectangle">
+    <div class="content_container">
+      
+      <div class="rectangle1">
+        <img class="face" src={% static "vendor/images/face2.jpg"%}>
+        <div class="answer">
+          <form class="form_log" action="{% url 'main'%}" method ="get">
+            <input class="inputs" placeholder="Введите название аниме" required="" type="text" name="search">
+            <button>
+              <img src={%static "vendor/images/lupa.png"%}>
+            </button>
+            {%if answer%}
+              <div class="cont_anime">
+                <a href="{{answer.urls}}" target="_blank"><img class="image_anime1" src="{{answer.images}}" alt="Anime tyan"></a>
+                <div class="info1">
+                  <a href="{{answer.urls}}" target="_blank"><div class="name_anime"><b>{{answer.name}}</b></div></a>
+                  <hr>
+                  <div class="text1"><b>Рейтинг на <a href="https://animego.org/" target="_blank">AnimeGo</a>: </b>{{answer.rating}}</div>
+                  <hr>
+                  <div class="text1"><b>Количество серий: </b>{{answer.episodes}}</div>
+                  <hr>
+                  <div class="text1"><b>Жанр: </b>{{answer.genres}}</div>
+                  <hr>
+                  <div class="time">
+                    <span><b>Время нужное для просмотра:</b></span>
+                    <ul>
+                      <li>Минут: {{ time.minutes }}</li>
+                      <li>Часов: {{time.hours.0}}:{{time.hours.1}}</li>
+                      <li>Дней: {{time.days.0}}:{{time.days.1}}:{{time.days.2}}</li>
+                    </ul>
+                </div>
+              </div>
+            {%endif%}
+            </div>
+          </form>
+        </div>
+      
+      
+      
+      
+      </div>
+      <div class="rectangle2">
+        <p class="recom"><b>Рекомендую посмотреть на основе просмотренных вами аниме</b></p>
         <div class="prokrutka">
           {%for anime in animes %}
             <div class="anime">
-              <div class="image"><img class="image_anime" src="{{anime.image}}" alt="Anime tyan"></div>
+              <a href="{{anime.urls}}" target="_blank"><img class="image_anime" src="{{anime.images}}" alt="Anime tyan"></a>
               <div class="info">
-                <div class="name"><b>{{anime.name}}</b></div>
-                <div class="text">Рейтинг на AnimeGo: {{anime.rating}}</div>
-                <div class="text">Количество серий: {{anime.episodes}}</div>
-                <div class="text">Жанр: {{anime.genres}}</div>
+                <a href="{{anime.urls}}" target="_blank"><div class="name"><b>{{anime.name}}</b></div></a>
+                <hr>
+                <div class="text"><b>Рейтинг на <a href="https://animego.org/" target="_blank">AnimeGo</b></a>: {{anime.rating}}</div>
+                <hr>
+                <div class="text"><b>Количество серий: </b>{{anime.episodes}}</div>
+                <hr>
+                <div class="text"><b>Жанр: </b>{{anime.genres}}</div>
+                <hr>
               </div>
             </div>
-          {% endfor %}
-        </div>
+          {% endfor %} 
+        </div> 
       </div>
     </div>
 {% endblock content_container %}

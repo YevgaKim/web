@@ -4,13 +4,17 @@
 body {
 	margin:0px;
 	padding:0px;
-	background-attachment: scroll;
+	background-attachment: scroll;	
+}
+
+.all{
 	background-image: url(../images/bg.jpg);
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	
-	
-	
+	background-size: 100% 100%;	
+}
+
+#logo_image hr{
+	border: 1px solid rgb(166, 0, 12);
 }
 
 #content_container {
@@ -43,7 +47,6 @@ body {
 	margin-left:10px;
 	margin-top:15px;
 	float:left;
-	background-image: url(../images/logo.jpg);
 	background-repeat: no-repeat;
 	
 }
@@ -56,25 +59,45 @@ body {
 
 #bottom_bar_black {
 	width:100%;
-	height:160px;
+	height:170px;
 	background-color:#000000;
+	float: right;
 }
 
 #nav_block {
-	width: 400px;
+	width: 450px;
 	height:90px;
 	float:right;
+	
 }
 
+.social{
+	position: absolute;
+    left: 950px;
+    top: 850px;
+}
+
+
 .nav_button {
-	width: 100px; /*This number you can edit when you need to add more with to fit your text inside the button */
+	width: 100px; 
 	color:#FFFFFF;
 	font-family:'Times New Roman', Times, serif;
 	font-size:20px;
 	margin-left:5px;
 	margin-top:35px;
 	text-align:center;
-	float:left;
+	float:right;
+}
+
+.nav_button_log_reg {
+	width: 150px; 
+	color:#FFFFFF;
+	font-family:'Times New Roman', Times, serif;
+	font-size:20px;
+	margin-left:20px;
+	margin-top:35px;
+	text-align:center;
+	float:right;
 }
 
 .nav_button:link {
@@ -139,7 +162,7 @@ body {
 	margin-right:40px;
 }
 
-/*Warning removing this means you must pay for this templete if you remove this you will be located and this will result in payment being required*/
+
 
 #copywriteblock {
 	margin-left:auto;
@@ -159,29 +182,29 @@ body {
     height:570px;
     background:#838383;
 	position: relative;
-	top: 196px;
+	top: 106px;
 	left: 0px;
-	opacity: 0.97;
+	opacity: 1;
 }
 
-ul {
+.social ul {
 	position: relative;
 	display: flex;
 }
-ul li {
+.social ul li {
 	position: relative;
 	list-style: none;
 	margin: 30px 20px;
 	cursor: pointer;
 }
-ul li a {
+.social ul li a {
 	text-decoration: none;
 }
-ul li a .fa-brands {
+.social ul li a .fa-brands {
 	font-size: 4em;
 	color: #222;
 }
-ul li a::before {
+.social ul li a::before {
 	font-family: "FontAwesome";
 	position: absolute;
 	top: 0;
@@ -192,7 +215,7 @@ ul li a::before {
 	transition: 0.5s ease-in-out;
 }
 
-ul li:nth-child(1) a::before {
+.social ul li:nth-child(1) a::before {
 	content: "\f16d";
 	background-image: linear-gradient(45deg, 
 	  #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,
@@ -201,17 +224,17 @@ ul li:nth-child(1) a::before {
 	 -webkit-text-fill-color: transparent;
 	border-bottom: 4px solid #dc2743;
 }
-ul li:nth-child(2) a::before {
+.social ul li:nth-child(2) a::before {
 	content: "\f09b";
 	color: #889096;
 	border-bottom: 4px solid #889096;
 }
-ul li:nth-child(3) a::before {
+.social ul li:nth-child(3) a::before {
 	content: "\f2c6";
 	color: #1DA1F2;
 	border-bottom: 4px solid #1DA1F2;
 }
-ul li:hover a::before {
+.social ul li:hover a::before {
 	height: 100%;
 }
 
@@ -220,13 +243,6 @@ a{
 	text-decoration: none;
 }
 
-.text_start_1{
-	color: #000000;
-	position: relative;
-	font-size: 40px;
-	left: 185px;
-	top: 10px;
-}
 
 .text_start_2{
 	color: #000000;
@@ -236,14 +252,17 @@ a{
 	top: 10px;
 }
 
-.start_photo{
-	position: relative;
-	height: 60%;
-	width: 45%;
-	left: 450px;
-	top: 30px;
-}
 
+.name_site{
+    color: rgb(166, 0, 12);
+    font-size:30px;
+    position: absolute;
+    display: inline;
+    top: 25px;
+    left: 300px;
+    font-family: monospace;
+
+}
 
 
 

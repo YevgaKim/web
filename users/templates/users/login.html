@@ -1,0 +1,53 @@
+{% extends 'first_try/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'vendor/css/log_reg.css' %}" rel="stylesheet">
+{% endblock css %}
+
+
+{% block nav_block %}
+        <div id="nav_block"> 
+          <div class="nav_button"><a href={% url 'main' %}>Main</a></div>
+          <div class="nav_button"><a href=""> About</a></div>
+        </div>
+{% endblock nav_block %}
+
+{% block content_container %}
+    <div id="content_container">
+      <div id="rectangle">
+        <img class="face1" src={% static "vendor/images/face1.jpg"%}>
+        <div>
+          <p class="text_start_log"><b>Login</b></p>
+          <form class="form_log" action="{% url 'login'%}" method ="post">  
+            {% csrf_token %}  
+            {{form.username}} 
+            <div class="password">
+              {{form.password}} 
+              <a  href="" class="password-control" onclick="return show_hide_password(this);"><img src={% static 'vendor/images/eye.png' %}></a>
+            </div>  
+            
+            
+            <button>
+              <span class="span_log">Войти</span>
+              <div class="top"> </div>
+              <div class="left"></div>
+              <div class="bottom"></div>
+              <div class="right"></div>
+            </button>
+              
+            <div class="help"><em>Нет аккаунта? </em><a href={% url 'registration' %}>Зарегистрироваться</a></div>
+            {% if error_invalid %}
+              <div class="error_invalid"><div class="text_error">Неверно введено ник или пароль</div></div>
+            {% endif %}
+          </form>
+          
+       </div>
+        
+       <img class="face2" src={% static "vendor/images/face3.jpg"%}>
+      </div>
+
+    </div>
+{% endblock content_container %}
+
+{%block script%}<script src={%static "vendor/js/script.js"%}></script>{% endblock script%}

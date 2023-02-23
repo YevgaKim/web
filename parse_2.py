@@ -45,6 +45,7 @@ try:
                 "genres":genres.replace(",",", "),
                 "duration":duration,
                 "image":image,
+                "url":i.strip(),
             }
         )
         count+=1
@@ -53,7 +54,7 @@ try:
 except:
     pass
 finally:
-    with open("result_3.json","w",encoding="utf-8") as f:
+    with open("result.json","w",encoding="utf-8") as f:
         json.dump(anime,f,indent=4,ensure_ascii=False)
     print(f"{err1} - ERROR 1\n{err2} - ERROR 2\n{err3} - ERROR 3")
     finish_time=time.time()-start
