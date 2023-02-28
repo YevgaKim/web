@@ -3,6 +3,7 @@ from django.contrib.auth import logout
 from django.shortcuts import HttpResponseRedirect, render
 from django.urls import reverse
 
+from first_try.models import Anime
 from users.forms import UserLoginForm, UserRegistrationForm
 from users.models import User, UserAnime
 
