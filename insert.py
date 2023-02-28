@@ -13,7 +13,7 @@ duration = []
 images = []
 urls=[]
 count=1
-for txt in text:
+for txt in text[:10]:
     id.append(count)
     name.append(txt['name'])
     rat = txt["rating"].replace(",",".")

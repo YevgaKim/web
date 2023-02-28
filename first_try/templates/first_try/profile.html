@@ -3,16 +3,9 @@
 
 {% block nav_block %}   
         <div id="nav_block"> 
-          <div class="nav_button"><a href={% url "exit"%}>Exit</a></div>
-          {% if user.is_authenticated%}
-           
-          {% else %}
-            <div class="nav_button_log_reg"><a href={% url "login"%}>Login</a>|<a href={% url "registration"%}>Registration</a></div>
-          {% endif %}
-          <div class="nav_button"><a href={% url 'main' %}>Main</a></div>
-          <div class="nav_button"><a href=""> About</a></div>
-          
-          
+          <a href={% url "exit"%}><div class="nav_button">Exit</div></a>
+          <a href={% url 'main' %}><div class="nav_button">Main</div></a>
+          <a href=""><div class="nav_button">About</div></a> 
         </div>
 {% endblock nav_block %}
 

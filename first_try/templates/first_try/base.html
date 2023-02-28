@@ -9,12 +9,11 @@
   <title>Anitiming</title>
   <link href={% static 'vendor/css/stylesheet.css' %} rel="stylesheet" type="text/css" />
   <script src="https://kit.fontawesome.com/0734cd974a.js" crossorigin="anonymous"></script>
-  <link type="Image/x-icon" href={% static 'vendor/images/logo.ico' %} rel="icon">
+  <link type="Image/x-icon" href={% static 'vendor/images/logo.plus.ico' %} rel="icon">
   {% block css %} {% endblock css %}
 </head>
 
 <body>
-  <div class="all">
     <div id="top_bar_black"> 
       <div id="logo_container"> 
         <div id="logo_image">
@@ -23,11 +22,12 @@
           </a>
           <a class="name_site"href={% url 'main' %}>Anitiming</a>
           <hr>
+          <span>сайт для подсчета просмотра аниме</span>
         </div> 
         {% block nav_block %} {% endblock nav_block %} 
       </div> 
     </div>
-          
+    <div class="all">  
     {% block content_container %} {% endblock content_container %}
            
     </div>

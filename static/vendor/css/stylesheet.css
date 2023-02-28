@@ -15,6 +15,8 @@ body {
 
 #logo_image hr{
 	border: 1px solid rgb(166, 0, 12);
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 #content_container {
@@ -29,9 +31,7 @@ body {
 
 #logo_container {
 	height:90px;
-	width:900px;
-	margin-left:auto;
-	margin-right:auto;
+	width:97%;
 }
 
 #main_container {
@@ -42,13 +42,17 @@ body {
 }
 
 #logo_image {
-	width:255px;
+	width:370px;
 	height:75px;
-	margin-left:10px;
-	margin-top:15px;
 	float:left;
 	background-repeat: no-repeat;
+	margin-left: 10px;
 	
+}
+
+#logo_image img{
+	position: relative;
+	left: -20px;
 }
 
 #top_bar_black {
@@ -84,21 +88,20 @@ body {
 	font-family:'Times New Roman', Times, serif;
 	font-size:20px;
 	margin-left:5px;
-	margin-top:35px;
+	margin-top:25px;
 	text-align:center;
 	float:right;
+	background: none;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 10px;
 }
 
-.nav_button_log_reg {
-	width: 150px; 
-	color:#FFFFFF;
-	font-family:'Times New Roman', Times, serif;
-	font-size:20px;
-	margin-left:20px;
-	margin-top:35px;
-	text-align:center;
-	float:right;
+.nav_button:hover {
+    background: #201f1f;
+    transition: 0.3s;
 }
+
 
 .nav_button:link {
 	text-decoration:none;
@@ -258,11 +261,16 @@ a{
     font-size:30px;
     position: absolute;
     display: inline;
-    top: 25px;
-    left: 300px;
+    top: 15px;
+    left: 55px;
     font-family: monospace;
 
 }
 
+#logo_image span{
+	color: rgb(166, 0, 12);
+	font-size:20px;
+	font-family: monospace;
+}
 
 

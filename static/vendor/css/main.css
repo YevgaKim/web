@@ -1,51 +1,78 @@
 @charset "UTF-8";
 
 .prokrutka {
-    height: 475px; 
-    width: 100%; 
-    background: #201f1f; 
+    height: 472px; 
+    width: 100%;  
     overflow-y: scroll; 
     position: absolute;
     top: 78px;
     left: 0px;
 }
 
+.prokrutka::-webkit-scrollbar {
+    width: 10px;
+}
+  
+.prokrutka::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #f9f9fd;
+    border-radius: 10px;
+}
+
+.prokrutka::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, white, black);
+}
+
 .anime{
-    height: 155px;
+    height: 200px;
     width: 98%;
-    background: #000000;
     position: relative;
-    top: 7px;
     left: 5px;
     color: white;
-    border-bottom: 5px solid #201f1f;
 }
 
 
 
 .image_anime{
-    height: 145px;
-    width: 100px;
-    top: 5px;
+    height: 160px;
+    width: 125px;
+    top: 20px;
     position: relative;
-    left: 5px;
+    left: 30px;
+}
+
+.block_info{
+    height: 160px;
+    width: 380px;
+    position: relative;
+    top: -135px;
+    left: 150px;
 }
 
 .info{
-    height: 145px;
-    width: 345px;
-    position: relative;
-    top: -140px;
-    left: 110px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
 }
 
 .name{
     color: white;
     font-size: 20px;
+    text-align: center;
+    color: rgb(166, 0, 12);
+    font-family: monospace;
+    letter-spacing: 1px;
 }
 
 .text {
-    color: white;
+    color: black;
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 
@@ -59,32 +86,23 @@ p {
 }
 
 
-.recom{
-    color: black;
-    font-size: 30px;
-    position: absolute;
-    text-align: center;
-    border: #000000 5px solid;
-}
 
 .rectangle1{
     width:550px;
     height:550px;
-    background:#838383;
+    background:rgb(170,167,167,0.8);
 	position: absolute;
 	top: 290px;
 	left: 0px;
-	opacity: 1;
 }
 
 .rectangle2{
     width:559px;
     height:550px;
-    background:#838383;
+    background:rgb(170,167,167,0.8);
 	position: absolute;
 	top: 290px;
 	right: 0px;
-	opacity: 1;
 }
 
 .content_container {
@@ -113,6 +131,8 @@ p {
     position: absolute;
     top: 5px;
     left: 10px;
+    font-family: monospace;
+    letter-spacing: 1px;
 
 }  
 
@@ -134,16 +154,17 @@ button {
     top: 10px;
   }
   
-  button:hover {
+button:hover {
     background: #201f1f;
     transition: 0.3s;
   }
   
 .image_anime1{
-    height: 300px;
+    height: 310px;
     width: 200px;
     position: absolute;
     left: 10px;
+
 }
 
 .name_anime{
@@ -156,7 +177,7 @@ button {
 .info1{
     position: relative;
     left: 215px;
-    width: 58%;
+    width: 325px;
     
 }
 
@@ -165,14 +186,82 @@ button {
     font-size: 18px;
 }
 
-hr {
+
+
+.recom{
+    position: relative;
+    width: 100%;
+    height: 60px;
+
+}
+
+.cont_anime h1{
+    color: rgb(166, 0, 12);
+    font-family: monospace;
+    letter-spacing: 2px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    font-size: 20x;
+    line-height: 22px;
+    text-align: center;
+}
+
+.recom h1{
+    color: rgb(166, 0, 12);
+    font-family: monospace;
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    position: relative;
+    height: 20px;
+}
+
+.recom h2{
+    color: black;
+    font-family: monospace;
+    letter-spacing: 1px;
+    width: 100%;
+    text-align: center;
     margin-top: 0px;
     margin-bottom: 0px;
+    position: relative;
+    top: 10px;
 }
+
+.recom hr{
+    margin: 0px auto 10px;
+    padding: 0;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid #1f1209;
+    box-shadow: 0 20px 20px -20px #333;
+    width: 100%;
+    position: relative;
+    top: -33px
+}
+
+.anime hr{
+    margin: 0px auto 10px;
+    padding: 0;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid #1f1209;
+    box-shadow: 0 20px 20px -20px #333;
+    width: 95%;
+    position: relative;
+    top: -170px;
+}
+
+
 
 .info1 hr{
     border: 2px solid black;
     border-bottom-width: 0;
+    margin: 1px;
     
 }
 
@@ -182,7 +271,7 @@ hr {
 
 .cont_anime{
     position: absolute;
-    top: 65px;
+    top: 75px;
 }
 
 .time{
@@ -197,6 +286,15 @@ hr {
     font-size: 18px;
 }
 
-.time span{
-    font-size: 20px;
+
+.anime a{
+    color: #000000;
+}
+
+.time h1{
+    color: rgb(166, 0, 12);
+    font-family: monospace;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 22px;
 }

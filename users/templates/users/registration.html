@@ -8,8 +8,8 @@
 
 {% block nav_block %} 
         <div id="nav_block"> 
-          <div class="nav_button"><a href={% url 'main' %}>Main</a></div>
-          <div class="nav_button"><a href=""> About</a></div>
+          <a href={% url 'main' %}><div class="nav_button">Main</div></a>
+          <a href=""><div class="nav_button">About</div></a>
         </div> 
 {% endblock nav_block %}
 
@@ -25,11 +25,11 @@
             {{form.email}} 
             <div class="password">
               {{form.password1}} 
-              <a  href="" class="password-control" id="password1"><img src={% static 'vendor/images/eye.png' %}></a>
+              <a  href="" class="password-control" id="b2"><img src={% static 'vendor/images/eye.png' %}></a>
             </div>    
             <div class="password">
               {{form.password2}} 
-              <a  href="" class="password-control" id="password2"><img src={% static 'vendor/images/eye.png' %}></a>
+              <a  href="" class="password-control" id="b3"><img src={% static 'vendor/images/eye.png' %}></a>
             </div> 
             
             <button>

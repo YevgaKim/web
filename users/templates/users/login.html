@@ -8,8 +8,8 @@
 
 {% block nav_block %}
         <div id="nav_block"> 
-          <div class="nav_button"><a href={% url 'main' %}>Main</a></div>
-          <div class="nav_button"><a href=""> About</a></div>
+          <a href={% url 'main' %}><div class="nav_button">Main</div></a>
+          <a href=""><div class="nav_button">About</div></a>
         </div>
 {% endblock nav_block %}
 
@@ -24,7 +24,7 @@
             {{form.username}} 
             <div class="password">
               {{form.password}} 
-              <a  href="" class="password-control" onclick="return show_hide_password(this);"><img src={% static 'vendor/images/eye.png' %}></a>
+              <a  href="" class="password-control" id="b1"><img src={% static 'vendor/images/eye.png' %}></a>
             </div>  
             
             

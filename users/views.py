@@ -4,7 +4,7 @@ from django.shortcuts import HttpResponseRedirect, render
 from django.urls import reverse
 
 from users.forms import UserLoginForm, UserRegistrationForm
-from users.models import User
+from users.models import User, UserAnime
 
 
 def login(request):
@@ -37,7 +37,8 @@ def registration(request):
     if request.method =="POST":
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            new_user = form.save()
+            UserAnime.objects.create(user=new_user)
             return HttpResponseRedirect(reverse("login"))
         else:
             for k in form.errors:
