@@ -6,6 +6,9 @@ from first_try.models import Anime
 
 class User(AbstractUser):
     image = models.ImageField(upload_to="users_images", null=True, blank=True)
+    username = models.CharField(
+        max_length=50,
+        unique=True,)
 
 class UserAnime(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='anime_list')

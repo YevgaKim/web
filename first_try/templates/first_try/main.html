@@ -8,7 +8,7 @@
 {% block nav_block %}
       <div id="nav_block"> 
         {% if user.is_authenticated%}
-          <div class="nav_button"><a href={% url "Bio"%}>{{user.username}}</a></div>
+          <div class="nav_button"><a href={% url "profile"%}>{{user.username}}</a></div>
         {% else %}
           <a href={% url "registration"%}><div class="nav_button">Registration</div></a>
           <a href={% url "login"%}><div class="nav_button">Login</div></a>
@@ -34,7 +34,6 @@
                 <a href="{{answer.urls}}" target="_blank">
                   <h1><b>{{answer.name}}</b></h1>
                 </a>
-                <hr>
                 <div class="text1"><b>Рейтинг на <a href="https://animego.org/" target="_blank">AnimeGo</a>: </b>{{answer.rating}}</div>
                 <hr>
                 <div class="text1"><b>Количество серий: </b>{{answer.episodes}}</div>
@@ -43,11 +42,12 @@
                 <hr>
                 <div class="time">
                   <h1><b>Время нужное для просмотра:</b></h1>
-                  <ul>
-                    <li>Минут: {{ time.minutes }}</li>
-                    <li>Часов: {{time.hours.0}}:{{time.hours.1}}</li>
-                    <li>Дней: {{time.days.0}}:{{time.days.1}}:{{time.days.2}}</li>
-                  </ul>
+                  <table>
+                    <tr><th>Минут</th><th>Часов</th><th>Дней</th></tr>
+                    <tr><td>{{ time.minutes }}</td><td>{{time.hours.0}}:{{time.hours.1}}</td>
+                      <td>{{time.days.0}}:{{time.days.1}}:{{time.days.2}}</td></tr>
+                    </tr>
+                  </table>
                 </div>
               </div>
             {%endif%}

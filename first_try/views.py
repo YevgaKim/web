@@ -22,7 +22,7 @@ def main(request):
     days = math.floor(time/(24*60))
     hours_days = math.floor(time/60%24)
     context ={
-        "animes": Anime.objects.all()[:10],
+        "animes": Anime.objects.all()[:100],
         "answer":answer,
         "time":{
             "minutes": minutes,
@@ -33,6 +33,12 @@ def main(request):
     return render(request,"first_try/main.html",context=context)
 
 def bio(request):
-    return render(request,"first_try/profile.html")
+    print(request.GET)
+    img = False
+    context = {
+        "img":img,
+        "animes": Anime.objects.all()[:100],
+    }
+    return render(request,"first_try/profile.html",context=context)
 
 

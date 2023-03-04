@@ -47,8 +47,10 @@
               <div class="error_invalid"><div class="text_error">Пароль слишком простой</div></div>
             {% elif error_similiar%}
               <div class="error_invalid"><div class="text_error">Пароли не совпадают</div></div>
-              {% elif erro_similiar_pass_username%}
+            {% elif error_similiar_pass_username%}
               <div class="error_invalid"><div class="text_error">Пароль и ник слишком похожие</div></div>
+            {% elif error_toomuchwords%}
+              <div class="error_invalid"><div class="text_error">Ник содержит слишком много букв</div></div>
             {% endif %}
             
           </form>

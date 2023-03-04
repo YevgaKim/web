@@ -1,0 +1,405 @@
+.info_about_user{
+    position: absolute;
+    width: 35%;
+    height: 100%;
+}
+
+.image_user{
+    position: relative;
+    top: 15px;
+    left: 15px;
+    width: 275px;
+    height: 340px;
+    border: 5px solid black;
+}
+
+.username{
+    font-size: 30px;
+    position: relative;
+    top: 15px;
+    left: 25px;
+    width: 285px;
+    overflow-wrap: break-word;
+}
+
+.genre{
+    position: relative;
+    top: 10px;
+    left: 15px;
+    font-size: 20px;
+    word-break: break-all;
+    width: 285px;
+}
+
+button {
+    padding: 20px 60px;
+    background-color: rgb(43, 41, 41);
+    border: none;
+    font-size: 18px;
+    position: relative;
+    left: 15px;
+    top: 10px;
+    /* overflow: hidden; */
+    transition: 300ms;
+    width: 285px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.span_bt{
+    color: gray;
+    position: relative;
+    transition: 300ms;
+    transition-delay: 500ms;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    left: -1px;
+    top: -5px;
+}
+
+button:before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+    bottom: 50%;
+    transition: 300ms;
+    transition-delay: 500ms;
+    background-color: black;
+    box-shadow: 0 0 10px black,
+        0 0 30px black, 
+        0 0 50px black;
+}
+
+button div {
+    transition: 300ms;
+    position: absolute;
+    background-color: black;
+    box-shadow: 0 0 15px black, 0 0 30px black, 0 0 50px black;
+}
+
+button .top {
+    width: 15px;
+    height: 2px;
+    top: 0;
+    left: 0;
+}
+
+button .bottom {
+    width: 15px;
+    height: 2px;
+    bottom: 0;
+    right: 0;
+}
+
+button .left {
+    width: 2px;
+    height: 15px;
+    top: 0;
+    left: 0;
+}
+
+button .right {
+    width: 2px;
+    height: 15px;
+    bottom: 0;
+    right: 0;
+}
+
+button:hover {
+    color: #000;
+}
+
+button:hover span {
+    color: white;
+}
+
+button:hover:before {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+button:hover .top, 
+button:hover .bottom {
+    width: 100%;
+}
+
+button:hover .left,
+button:hover .right {
+    height: 100%;
+}
+
+.podborka{
+    width: 570px;
+    height: 88%;
+    position: absolute;
+    left: 305px;
+}
+
+.anime hr{
+    margin: 0px auto 10px;
+    padding: 0;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid #1f1209;
+    box-shadow: 0 20px 20px -20px #333;
+    width: 95%;
+    position: relative;
+    top: -170px;
+}
+
+.prokrutka {
+    height: 403px; 
+    width: 100%;  
+    overflow-y: scroll; 
+    position: absolute;
+    top: 40px;
+    left: 5px;
+}
+
+.prokrutka::-webkit-scrollbar {
+    width: 10px;
+}
+  
+.prokrutka::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #f9f9fd;
+    border-radius: 10px;
+}
+
+.prokrutka::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, white, black);
+}
+
+.anime{
+    height: 200px;
+    width: 98%;
+    position: relative;
+    color: white;
+}
+
+
+
+.image_anime{
+    height: 160px;
+    width: 125px;
+    top: 20px;
+    position: relative;
+    left: 30px;
+}
+
+.block_info{
+    height: 160px;
+    width: 380px;
+    position: relative;
+    top: -140px;
+    left: 160px;
+}
+
+.info{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+}
+
+.name{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(166, 0, 12);
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.text {
+    color: black;
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.text a{
+    color: #000;
+}
+
+.checkbox-apple {
+    position: absolute;
+    left: 480px;
+    top: 170px;
+    width: 50px;
+    height: 25px;
+    margin: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+.checkbox-apple label {
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    border-radius: 50px;
+    background: linear-gradient(to bottom, #b3b3b3, #e6e6e6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkbox-apple label:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background-color: gray;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.checkbox-apple input[type="checkbox"]:checked + label {
+    background: linear-gradient(to bottom, black, black);
+}
+
+.checkbox-apple input[type="checkbox"]:checked + label:after {
+    transform: translateX(25px);
+}
+
+.checkbox-apple label:hover {
+    background: linear-gradient(to bottom, #b3b3b3, #e6e6e6);
+}
+
+.checkbox-apple label:hover:after {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.yep {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 22px;
+}
+
+.but {
+    padding: 20px 60px;
+    background-color: rgb(43, 41, 41);
+    border: none;
+    font-size: 18px;
+    position: absolute;
+    left: 140px;
+    top: 440px;
+    /* overflow: hidden; */
+    transition: 300ms;
+    width: 285px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.span_bt2{
+    color: gray;
+    position: relative;
+    transition: 300ms;
+    transition-delay: 500ms;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    left: -1px;
+    top: -5px;
+}
+
+.but:before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+    bottom: 50%;
+    transition: 300ms;
+    transition-delay: 500ms;
+    background-color: black;
+    box-shadow: 0 0 10px black,
+        0 0 30px black, 
+        0 0 50px black;
+}
+
+.but div {
+    transition: 300ms;
+    position: absolute;
+    background-color: black;
+    box-shadow: 0 0 15px black, 0 0 30px black, 0 0 50px black;
+}
+
+.but .top {
+    width: 15px;
+    height: 2px;
+    top: 0;
+    left: 0;
+}
+
+.but .bottom {
+    width: 15px;
+    height: 2px;
+    bottom: 0;
+    right: 0;
+}
+
+.but .left {
+    width: 2px;
+    height: 15px;
+    top: 0;
+    left: 0;
+}
+
+.but .right {
+    width: 2px;
+    height: 15px;
+    bottom: 0;
+    right: 0;
+}
+
+.but:hover {
+    color: #000;
+}
+
+.but:hover span {
+    color: white;
+}
+
+.but:hover:before {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.but:hover .top, 
+.but:hover .bottom {
+    width: 100%;
+}
+
+.but:hover .left,
+.but:hover .right {
+    height: 100%;
+}

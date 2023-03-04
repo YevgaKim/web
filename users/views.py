@@ -5,7 +5,7 @@ from django.urls import reverse
 
 from first_try.models import Anime
 from users.forms import UserLoginForm, UserRegistrationForm
-from users.models import User, UserAnime
+from users.models import UserAnime
 
 
 def login(request):
@@ -34,12 +34,13 @@ def registration(request):
     error_exists = False
     error_toocommon = False
     error_similiar = False
-    erro_similiar_pass_username = False
+    error_similiar_pass_username = False
+    error_toomuchwords = False
     if request.method =="POST":
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             new_user = form.save()
-            UserAnime.objects.create(user=new_user)
+            UserAnime.objects.get_or_create(user=new_user)
             return HttpResponseRedirect(reverse("login"))
         else:
             for k in form.errors:
@@ -50,7 +51,9 @@ def registration(request):
                 elif form.errors[k][0]=="The two password fields didn’t match.":
                     error_similiar=True 
                 elif form.errors[k][0]=="The password is too similar to the username.": 
-                    erro_similiar_pass_username=True
+                    error_similiar_pass_username=True
+                elif "Ensure this value has at most 50 characters" in form.errors[k][0]:
+                    error_toomuchwords= True
                 print(form.errors[k][0])
     else:
         form = UserRegistrationForm()
@@ -58,7 +61,8 @@ def registration(request):
                 "error_exists": error_exists,
                 "error_toocommon": error_toocommon,
                 "error_similiar": error_similiar,
-                "erro_similiar_pass_username":erro_similiar_pass_username,}
+                "error_similiar_pass_username":error_similiar_pass_username,
+                "error_toomuchwords":error_toomuchwords,}
     return render(request,"users/registration.html",context)
 
 def exit(request):
