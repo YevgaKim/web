@@ -1,9 +1,11 @@
+import collections
 import math
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from first_try.models import Anime
+from users.models import UserAnime
 
 
 def main(request):
@@ -32,12 +34,37 @@ def main(request):
     }
     return render(request,"first_try/main.html",context=context)
 
-def bio(request):
-    print(request.GET)
+def profile(request):
+    if request.method == 'POST':
+        anime_ids = request.POST.getlist("anime")
+        if anime_ids:
+            for i in anime_ids:
+                anime = Anime.objects.get(id=i)
+                useranime = UserAnime(user=request.user, anime=anime)
+                useranime.save()
+            return redirect('profile')
     img = False
+    anime_ids = UserAnime.objects.filter(user=request.user).values_list('anime_id', flat=True)
+
+    genres = []
+    print(1)
+    for i in anime_ids:
+        if i!=None:
+            anime = Anime.objects.get(id=i)
+            genres.append(anime.genres)
+    print(2)
+
+    # genre = [genres.extend(i.split(", ")) for i in genres]
+    
+    print(genres)
+    # counter = collections.Counter(genre)
+    # most_common = counter.most_common(3)
+    # print(3)
+    # print(most_common)
     context = {
         "img":img,
         "animes": Anime.objects.all()[:100],
+        "anime_ids":anime_ids,
     }
     return render(request,"first_try/profile.html",context=context)
 

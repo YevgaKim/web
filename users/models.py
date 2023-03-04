@@ -11,8 +11,8 @@ class User(AbstractUser):
         unique=True,)
 
 class UserAnime(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='anime_list')
-    anime = models.ManyToManyField(Anime, blank=True, related_name='users')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    anime = models.ForeignKey(Anime, on_delete=models.CASCADE,blank=True,null=True)
 
     def __str__(self):
         return f"{self.user.username}'s anime list"

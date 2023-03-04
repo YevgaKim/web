@@ -33,28 +33,32 @@
           </button>
         </div>
         <div class="podborka">
-          <form  action="{% url 'profile'%}" method ="get">
+          <form  action="{% url 'profile'%}" method ="post">
             {% csrf_token %}
             <div class="prokrutka">
               {%for anime in animes %}
-              <div class="anime">
-                <a href="{{anime.urls}}" target="_blank"><img class="image_anime" src="{{anime.images}}" alt="Anime tyan"></a>
-                <div class="block_info">
-                  <div class="info">
-                    <a href="{{anime.urls}}" target="_blank">
-                      <div class="name"><b>{{anime.name}}</b></div>
-                    </a>
-                    <div class="text"><b>Рейтинг на <a href="https://animego.org/" target="_blank">AnimeGo</b></a>: {{anime.rating}}</div>
-                    <div class="text"><b>Количество серий: </b>{{anime.episodes}}</div>
-                    <div class="text"><b>Жанр: </b>{{anime.genres}}</div>
+                {% if anime.id in anime_ids %}
+
+                {% else %}
+                  <div class="anime">
+                    <a href="{{anime.urls}}" target="_blank"><img class="image_anime" src="{{anime.images}}" alt="Anime tyan"></a>
+                    <div class="block_info">
+                      <div class="info">
+                        <a href="{{anime.urls}}" target="_blank">
+                          <div class="name"><b>{{anime.name}}</b></div>
+                        </a>
+                        <div class="text"><b>Рейтинг на <a href="https://animego.org/" target="_blank">AnimeGo</b></a>: {{anime.rating}}</div>
+                        <div class="text"><b>Количество серий: </b>{{anime.episodes}}</div>
+                        <div class="text"><b>Жанр: </b>{{anime.genres}}</div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="checkbox-apple">
+                      <input class="yep" id ="{{anime.id}}" name="anime" value="{{anime.id}}" type="checkbox">
+                      <label for="{{anime.id}}"></label>
+                    </div>
                   </div>
-                </div>
-                <hr>
-                <div class="checkbox-apple">
-                  <input class="yep" id="{{anime.id}}" type="checkbox">
-                  <label for="{{anime.id}}"></label>
-                </div>
-              </div>
+                {% endif %}
               {% endfor %}
             </div>
             <button class="but">
