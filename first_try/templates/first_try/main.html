@@ -8,7 +8,7 @@
 {% block nav_block %}
       <div id="nav_block"> 
         {% if user.is_authenticated%}
-          <div class="nav_button"><a href={% url "profile"%}>{{user.username}}</a></div>
+          <a href={% url "profile"%}><div class="nav_button_name">{{user.username}}</div></a>
         {% else %}
           <a href={% url "registration"%}><div class="nav_button">Registration</div></a>
           <a href={% url "login"%}><div class="nav_button">Login</div></a>

@@ -7,9 +7,9 @@
 
 {% block nav_block %}   
         <div id="nav_block"> 
-          <a href={% url "exit"%}><div class="nav_button">Exit</div></a>
-          <a href={% url 'main' %}><div class="nav_button">Main</div></a>
-          <a href=""><div class="nav_button">About</div></a> 
+          <a href={% url "exit"%}><div class="nav_button">   Exit   </div></a>
+          <a href={% url 'main' %}><div class="nav_button">   Main   </div></a>
+          <a href=""><div class="nav_button">   About   </div></a> 
         </div>
 {% endblock nav_block %}
 
@@ -18,28 +18,63 @@
       <div id="rectangle">
         <div class="info_about_user">
           {%if img%}
-            <img src="{{img}}" class="image_user">
+            <div class="div_image">
+              <img src="{{img}}" class="image_user">
+              <img src={%static "vendor/images/plus.png"%} class="plus">
+            </div>
           {%else%}
-            <img src={%static "vendor/images/start.jpg"%} class="image_user">
+            <div class="div_image">
+              <img src={%static "vendor/images/start.jpg"%} class="image_user">
+              <img src={%static "vendor/images/plus.png"%} class="plus">
+            </div>
           {%endif%}
           <div class="username"><b>{{user.username}}</b></div>
-          <div class="genre"><b>Ваши любимые жанры:</b> романтика, драма, боевик</div>
-          <button>
-            <span class="span_bt">Edit</span>
-            <div class="top"> </div>
-            <div class="left"></div>
-            <div class="bottom"></div>
-            <div class="right"></div>
-          </button>
+          <div class="genre"><b>Ваши любимые жанры:</b><br>
+            {% if genres %}
+              {{genres}}
+            {% endif %}
+          </div>
+          
         </div>
-        <div class="podborka">
+        {% comment %} <div class="podborka">
           <form  action="{% url 'profile'%}" method ="post">
             {% csrf_token %}
-            <div class="prokrutka">
-              {%for anime in animes %}
-                {% if anime.id in anime_ids %}
+            <div class="buttons">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="frame">
+              <div class="prokrutka">
+                {%for anime in animes %}
+                  {% if anime.id in user_anime_ids %}
 
-                {% else %}
+                  {% else %}
+                    <div class="anime">
+                      <a href="{{anime.urls}}" target="_blank"><img class="image_anime" src="{{anime.images}}" alt="Anime tyan"></a>
+                      <div class="block_info">
+                        <div class="info">
+                          <a href="{{anime.urls}}" target="_blank">
+                            <div class="name"><b>{{anime.name}}</b></div>
+                          </a>
+                          <div class="text"><b>Рейтинг на <a href="https://animego.org/" target="_blank">AnimeGo</b></a>: {{anime.rating}}</div>
+                          <div class="text"><b>Количество серий: </b>{{anime.episodes}}</div>
+                          <div class="text"><b>Жанр: </b>{{anime.genres}}</div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="checkbox-apple">
+                        <input class="yep" id ="{{anime.id}}" name="anime" value="{{anime.id}}" type="checkbox">
+                        <label for="{{anime.id}}"></label>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="prokrutka2">
+                {%for anime in animes %}
+                  {% if anime.id in user_anime_ids %}
                   <div class="anime">
                     <a href="{{anime.urls}}" target="_blank"><img class="image_anime" src="{{anime.images}}" alt="Anime tyan"></a>
                     <div class="block_info">
@@ -53,13 +88,13 @@
                       </div>
                     </div>
                     <hr>
-                    <div class="checkbox-apple">
-                      <input class="yep" id ="{{anime.id}}" name="anime" value="{{anime.id}}" type="checkbox">
-                      <label for="{{anime.id}}"></label>
-                    </div>
+                    
                   </div>
-                {% endif %}
-              {% endfor %}
+                  {% else %}
+                    
+                  {% endif %}
+                {% endfor %}
+              </div>
             </div>
             <button class="but">
               <span class="span_bt2">Send</span>
@@ -69,10 +104,33 @@
               <div class="right"></div>
             </button>
           </form>
-        </div>
+        </div> {% endcomment %}
+      </div>
+    </div>
+    <div class="modal">
+      <div class="modal_block">
+        <div class="closeModal"></div>
+        <form  action="{% url 'profile'%}" method ="post">
+          <label for="file-input" id="label">
+            <img src={%static "vendor/images/photo.png"%} alt="Image" id="image_user">
+          </label>
+          {% csrf_token %}  
+          {{form.profile_picture}} 
+          <div id="preview"></div>
+          <span class="delete">Удалить фото</span>
+          <button>
+            <span class="span_bt">Edit</span>
+            <div class="top"> </div>
+            <div class="left"></div>
+            <div class="bottom"></div>
+            <div class="right"></div>
+          </button>
+        </form>
       </div>
     </div>
 {% endblock content_container %}
+
+{% block script %}<script src={%static "vendor/js/profile.js"%}></script>{% endblock script %}
 
 
 

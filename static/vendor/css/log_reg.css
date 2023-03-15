@@ -220,7 +220,7 @@ button:hover .right {
 #rectangle{
   width:600px;
   height:600px;
-  background:#838383;
+  background:rgb(170,167,167, 0.8);
   position: relative;
   top: 106px;
   left: 150px;
@@ -230,7 +230,7 @@ button:hover .right {
 #rectangle_reg{
   width:600px;
   height:620px;
-  background:#838383;
+  background:rgb(170,167,167, 0.8);
   position: relative;
   top: 106px;
   left: 150px;

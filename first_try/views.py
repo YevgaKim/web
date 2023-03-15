@@ -1,9 +1,10 @@
 import collections
 import math
 
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.views.decorators.csrf import csrf_exempt
 
+from first_try.forms import ProfileForm
 from first_try.models import Anime
 from users.models import UserAnime
 
@@ -24,7 +25,7 @@ def main(request):
     days = math.floor(time/(24*60))
     hours_days = math.floor(time/60%24)
     context ={
-        "animes": Anime.objects.all()[:100],
+        "animes": Anime.objects.all(),
         "answer":answer,
         "time":{
             "minutes": minutes,
@@ -34,38 +35,51 @@ def main(request):
     }
     return render(request,"first_try/main.html",context=context)
 
+
+@csrf_exempt
 def profile(request):
     if request.method == 'POST':
-        anime_ids = request.POST.getlist("anime")
-        if anime_ids:
-            for i in anime_ids:
-                anime = Anime.objects.get(id=i)
-                useranime = UserAnime(user=request.user, anime=anime)
-                useranime.save()
+        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
             return redirect('profile')
-    img = False
-    anime_ids = UserAnime.objects.filter(user=request.user).values_list('anime_id', flat=True)
+    else:
+        form = ProfileForm(instance=request.user)
+    ANIME = Anime.objects.all()[:300]
+    if request.method == 'POST':
+        anime_ids = request.POST.getlist('anime')
+        if anime_ids:
+            user_anime_objs = []
+            for anime_id in anime_ids:
+                anime = ANIME.filter(id=anime_id).first()
+                if anime:
+                    user_anime_objs.append(UserAnime(user=request.user, anime=anime))
+            UserAnime.objects.bulk_create(user_anime_objs)
+            return redirect('profile')
 
-    genres = []
-    print(1)
-    for i in anime_ids:
-        if i!=None:
-            anime = Anime.objects.get(id=i)
-            genres.append(anime.genres)
-    print(2)
-
-    # genre = [genres.extend(i.split(", ")) for i in genres]
+    user_anime_ids = UserAnime.objects.filter(user=request.user).values_list('anime_id', flat=True)
     
-    print(genres)
-    # counter = collections.Counter(genre)
-    # most_common = counter.most_common(3)
-    # print(3)
-    # print(most_common)
+    genres = []
+    count = 0
+    for i in ANIME:
+        if i.id in user_anime_ids and i.id!=None:
+            genres.append(i.genres)
+            count+=1
+            if count==len(user_anime_ids)-1:
+                break
+
+    genre = [j.strip() for i in genres for j in i.split(", ") ]
+    
+    counter = collections.Counter(genre)
+    most_common = counter.most_common(3)
+    g = ",".join([i[0] for i in most_common])
     context = {
-        "img":img,
-        "animes": Anime.objects.all()[:100],
-        "anime_ids":anime_ids,
+        "img": False,
+        "animes": ANIME,
+        "user_anime_ids": user_anime_ids,
+        "genres":g,
+        'form': form,
     }
-    return render(request,"first_try/profile.html",context=context)
+    return render(request, "first_try/profile.html", context=context)
 
 

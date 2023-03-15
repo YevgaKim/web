@@ -13,7 +13,7 @@ duration = []
 images = []
 urls=[]
 count=1
-for txt in text[:300]:
+for txt in text[:750]:
     id.append(count)
     name.append(txt['name'])
     rat = txt["rating"].replace(",",".")
@@ -25,7 +25,7 @@ for txt in text[:300]:
     urls.append(txt["url"])
     count+=1
 
-
+text.pop(0)
 
 try:
     sqlite_connection = sqlite3.connect('db.sqlite3')

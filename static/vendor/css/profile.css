@@ -4,20 +4,70 @@
     height: 100%;
 }
 
-.image_user{
+.div_image{
     position: relative;
-    top: 15px;
+    top: 10px;
     left: 15px;
     width: 275px;
     height: 340px;
     border: 5px solid black;
+    border-radius: 20px;
+}
+
+.image_user{
+    max-width: 100%;
+    height: 100%;
+    border: 5px ;
+    border-radius: 16px;
+}
+
+.plus{
+    position: absolute;
+    left: 90px;
+    top: 115px;
+    display: none;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+}
+
+.plus:hover {
+    background: #201f1f;
+    transition: 0.3s;
+}
+
+
+.plus:link {
+	text-decoration:none;
+}
+
+.plus:hover {
+	text-decoration:none;
+	background-color: rgb(170,167,167, 0.8);
+}
+
+
+
+.plus:hover {
+    background: rgb(32,31,31,0.5);
+    transition: 0.3s;
+}
+
+
+.plus:link {
+	text-decoration:none;
+}
+
+.plus:hover {
+	text-decoration:none;
+	background-color:rgb(170,167,167, 0.5);
 }
 
 .username{
-    font-size: 30px;
+    font-size: 28px;
     position: relative;
     top: 15px;
-    left: 25px;
+    left: 15px;
     width: 285px;
     overflow-wrap: break-word;
 }
@@ -31,17 +81,38 @@
     width: 285px;
 }
 
+#rectangle{
+    width:900px;
+    height:570px;
+    background:rgb(170,167,167, 0.8);
+	position: relative;
+	top: 106px;
+	left: 0px;
+	opacity: 1;
+}
+
+
+#content_container {
+	margin-left:auto;
+	margin-right:auto;
+	width:900px;
+	height: 750px;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
 button {
     padding: 20px 60px;
     background-color: rgb(43, 41, 41);
     border: none;
     font-size: 18px;
-    position: relative;
-    left: 15px;
-    top: 10px;
+    position: absolute;
+    left: 20px;
+    top: 420px;
     /* overflow: hidden; */
     transition: 300ms;
-    width: 285px;
+    width: 360px;
     height: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -140,10 +211,11 @@ button:hover .right {
 }
 
 .podborka{
-    width: 570px;
+    width: 590px;
     height: 88%;
     position: absolute;
     left: 305px;
+    
 }
 
 .anime hr{
@@ -160,15 +232,16 @@ button:hover .right {
 
 .prokrutka {
     height: 403px; 
-    width: 100%;  
+    width: 98%;  
     overflow-y: scroll; 
     position: absolute;
-    top: 40px;
     left: 5px;
+    display: block;
 }
 
 .prokrutka::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
   
 .prokrutka::-webkit-scrollbar-track {
@@ -178,6 +251,31 @@ button:hover .right {
 }
 
 .prokrutka::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, white, black);
+}
+
+.prokrutka2 {
+    height: 403px; 
+    width: 98%;  
+    overflow-y: scroll; 
+    position: absolute;
+    left: 5px;
+    display: none;
+}
+
+.prokrutka2::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+  
+.prokrutka2::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #f9f9fd;
+    border-radius: 10px;
+}
+
+.prokrutka2::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: linear-gradient(180deg, white, black);
 }
@@ -196,15 +294,15 @@ button:hover .right {
     width: 125px;
     top: 20px;
     position: relative;
-    left: 30px;
+    left: 20px;
 }
 
 .block_info{
     height: 160px;
-    width: 380px;
+    width: 360px;
     position: relative;
     top: -140px;
-    left: 160px;
+    left: 140px;
 }
 
 .info{
@@ -238,7 +336,7 @@ button:hover .right {
 
 .checkbox-apple {
     position: absolute;
-    left: 480px;
+    left: 440px;
     top: 170px;
     width: 50px;
     height: 25px;
@@ -296,14 +394,31 @@ button:hover .right {
     height: 22px;
 }
 
+.buttons{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: block;
+}
+
+.frame{
+    border: rgb(43, 41, 41) solid 12px;
+    border-radius: 20px;
+    width: 530px;
+    height: 405px;
+    position: absolute;
+    left: 20px;
+    top: 50px;
+}
+
 .but {
     padding: 20px 60px;
     background-color: rgb(43, 41, 41);
     border: none;
     font-size: 18px;
     position: absolute;
-    left: 140px;
-    top: 440px;
+    left: 155px;
+    top: 437px;
     /* overflow: hidden; */
     transition: 300ms;
     width: 285px;
@@ -402,4 +517,180 @@ button:hover .right {
 .but:hover .left,
 .but:hover .right {
     height: 100%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 34px;
+    top: 3px;
+    left: 170px;
+    border: rgb(43, 41, 41) 10px solid;
+    border-radius: 34px;
+   
+}
+   
+.switch input {
+    display: none;
+}
+   
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+   
+.slider:before {
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(166, 0, 12);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+    content: "";
+}
+   
+input:checked + .slider {
+    background-color: white;
+}
+   
+input:focus + .slider {
+    box-shadow: 0 0 1px white;
+}
+   
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(215px);
+}
+   
+
+.slider:after {
+    display: block;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
+    content: "Непросмотренные";
+    color: rgb(166, 0, 12);
+    font-family: monospace;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 16px;
+}
+
+input:checked + .slider:after {
+    content: 'Просмотренные';
+    color: rgb(166, 0, 12);
+    font-family: monospace;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1050;
+    display: none;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background-color:rgba(0,0,0,.5)
+}
+
+.modal_block{
+    width: 400px;
+    height: 500px;
+    background-color:rgb(170,167,167,0.9);
+    position: absolute;
+    top:50px;
+    left: 480px;
+}
+
+@font-face {
+	font-family: 'koliko Regular';
+	src: url('static/vendor/fonts/koliko_regular.eot'); /* IE 9 Compatibility Mode */
+	src: url('static/vendor/fonts/koliko_regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('static/vendor/fonts/koliko_regular.woff2') format('woff2'), /* Super Modern Browsers */
+		url('static/vendor/fonts/koliko_regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('static/vendor/fonts/koliko_regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('static/vendor/fonts/koliko_regular.svg#koliko_regular') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+.closeModal{
+    cursor: pointer; 
+    position: absolute; 
+    top: 17px; 
+    left: 370px;
+}
+.closeModal:before,.closeModal:after {
+    content: ""; 
+    position: absolute; 
+    width: 24px; 
+    height: 4px; 
+    background: gray;
+}
+.closeModal:before {
+    transform: rotate(45deg);
+}
+.closeModal:after {
+    transform: rotate(-45deg);
+}
+
+
+.modal label {
+    display: inline-block;
+    cursor: pointer;
+}
+  
+.modal label img {
+    position: relative;
+    top: 90px;
+    left: 100px;
+    width: 200px;
+    height: 200px;
+    
+}
+  
+.modal input[type="file"] {
+    display: none;
+}
+
+#preview {
+    display: none;
+}
+
+#preview img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.delete{
+    display: none;
+    position: relative;
+    top: 40px;
+    font-size: 20px;
+    font-family: monospace;
+    letter-spacing: 1px;
+    left: 130px;
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+
 }

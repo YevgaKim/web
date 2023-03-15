@@ -83,7 +83,21 @@ body {
 
 
 .nav_button {
-	width: 100px; 
+	width: 110px;
+	color:#FFFFFF;
+	font-family:'Times New Roman', Times, serif;
+	font-size:20px;
+	margin-left:5px;
+	margin-top:25px;
+	text-align:center;
+	float:right;
+	background: none;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+.nav_button_name {
 	color:#FFFFFF;
 	font-family:'Times New Roman', Times, serif;
 	font-size:20px;
@@ -108,6 +122,23 @@ body {
 }
 
 .nav_button:hover {
+	text-decoration:none;
+	background-color:#333333;
+}
+
+
+
+.nav_button_name:hover {
+    background: #201f1f;
+    transition: 0.3s;
+}
+
+
+.nav_button_name:link {
+	text-decoration:none;
+}
+
+.nav_button_name:hover {
 	text-decoration:none;
 	background-color:#333333;
 }

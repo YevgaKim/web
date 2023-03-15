@@ -52,7 +52,7 @@ def registration(request):
                     error_similiar=True 
                 elif form.errors[k][0]=="The password is too similar to the username.": 
                     error_similiar_pass_username=True
-                elif "Ensure this value has at most 50 characters" in form.errors[k][0]:
+                elif "Ensure this value has at most 15 characters" in form.errors[k][0]:
                     error_toomuchwords= True
                 print(form.errors[k][0])
     else:
