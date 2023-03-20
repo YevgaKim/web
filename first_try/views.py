@@ -4,7 +4,7 @@ import math
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 
-from first_try.forms import ProfileForm
+from first_try.forms import UserProfileForm
 from first_try.models import Anime
 from users.models import UserAnime
 
@@ -38,15 +38,17 @@ def main(request):
 
 @csrf_exempt
 def profile(request):
+    print(request.FILES)
+    ANIME = Anime.objects.all()[:300]
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+
+        form = UserProfileForm(data = request.POST, files = request.FILES, instance = request.user)
         if form.is_valid():
             form.save()
             return redirect('profile')
-    else:
-        form = ProfileForm(instance=request.user)
-    ANIME = Anime.objects.all()[:300]
-    if request.method == 'POST':
+        else:
+            print(form.errors)
+
         anime_ids = request.POST.getlist('anime')
         if anime_ids:
             user_anime_objs = []
@@ -56,6 +58,8 @@ def profile(request):
                     user_anime_objs.append(UserAnime(user=request.user, anime=anime))
             UserAnime.objects.bulk_create(user_anime_objs)
             return redirect('profile')
+    else:
+        form = UserProfileForm(instance=request.user)
 
     user_anime_ids = UserAnime.objects.filter(user=request.user).values_list('anime_id', flat=True)
     
@@ -74,7 +78,6 @@ def profile(request):
     most_common = counter.most_common(3)
     g = ",".join([i[0] for i in most_common])
     context = {
-        "img": False,
         "animes": ANIME,
         "user_anime_ids": user_anime_ids,
         "genres":g,

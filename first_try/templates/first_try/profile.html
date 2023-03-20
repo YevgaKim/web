@@ -17,17 +17,10 @@
     <div id="content_container">
       <div id="rectangle">
         <div class="info_about_user">
-          {%if img%}
-            <div class="div_image">
-              <img src="{{img}}" class="image_user">
-              <img src={%static "vendor/images/plus.png"%} class="plus">
-            </div>
-          {%else%}
-            <div class="div_image">
-              <img src={%static "vendor/images/start.jpg"%} class="image_user">
-              <img src={%static "vendor/images/plus.png"%} class="plus">
-            </div>
-          {%endif%}
+          <div class="div_image">
+            <img src="{% if user.image %}{{user.image.url}} {%else%} {% static "vendor/images/start.jpg"%} {%endif%}" class="image_user">
+            <img src={%static "vendor/images/plus.png"%} class="plus">
+          </div>
           <div class="username"><b>{{user.username}}</b></div>
           <div class="genre"><b>Ваши любимые жанры:</b><br>
             {% if genres %}
@@ -110,12 +103,11 @@
     <div class="modal">
       <div class="modal_block">
         <div class="closeModal"></div>
-        <form  action="{% url 'profile'%}" method ="post">
-          <label for="file-input" id="label">
+        <form  action="{% url 'profile'%}" method ="post" enctype="multipart/form-data">
+          {{form.image}}
+          <label for={{form.image.id_for_label}}>
             <img src={%static "vendor/images/photo.png"%} alt="Image" id="image_user">
           </label>
-          {% csrf_token %}  
-          {{form.profile_picture}} 
           <div id="preview"></div>
           <span class="delete">Удалить фото</span>
           <button>
