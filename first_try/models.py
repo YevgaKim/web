@@ -7,7 +7,7 @@ class Anime(models.Model):
     episodes = models.PositiveIntegerField(null=True)
     duration = models.PositiveIntegerField(null=True)
     genres = models.TextField(null=True)
-    images = models.URLField(null=True)
+    images = models.ImageField(null=True)
     urls = models.URLField(null=True)
 
     def __str__(self):

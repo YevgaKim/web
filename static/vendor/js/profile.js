@@ -1,22 +1,22 @@
 //Переключение между прокрутками аниме
-// const checkbox = document.querySelector('input[type="checkbox"]'),
-//       prok1 = document.querySelector(".prokrutka"),
-//       prok2 = document.querySelector(".prokrutka2"),
-//       but = document.querySelector(".but");   
+const checkbox = document.querySelector('input[type="checkbox"]'),
+      prok1 = document.querySelector(".prokrutka"),
+      prok2 = document.querySelector(".prokrutka2"),
+      but = document.querySelector(".but");   
 
 
 
-// checkbox.addEventListener('change', function() {
-//   if (this.checked) {
-//     prok1.style.display = "none";
-//     prok2.style.display = "block";
-//     but.style.display = "none";
-//   } else {
-//     prok2.style.display = "none";
-//     prok1.style.display = "block"
-//     but.style.display = "block";
-//   }
-// });
+checkbox.addEventListener('change', function() {
+  if (this.checked) {
+    prok1.style.display = "none";
+    prok2.style.display = "block";
+    but.style.display = "none";
+  } else {
+    prok2.style.display = "none";
+    prok1.style.display = "block"
+    but.style.display = "block";
+  }
+});
 //Кнопка добавления фото
 const img = document.querySelector(".div_image"),
       img_photo = document.querySelector(".image_user"),
@@ -92,3 +92,15 @@ fileInput.addEventListener('change', () => {
   }
 });
 
+const d = document.querySelectorAll(".delete_anime");
+
+for (let i of d){
+  i.addEventListener("click",e=>{
+    e.preventDefault();
+    if (i.style.background == "rgb(166, 0, 12, 0.8)"){
+      i.style.background="none";
+    } else{
+      i.style.background = "rgb(166, 0, 12, 0.8)";
+    }
+});
+}

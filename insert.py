@@ -1,9 +1,12 @@
 import json
+import random
 import sqlite3
+import time
+import urllib.request
 
 with open('result.json', 'r', encoding='utf-8') as f: 
     text = json.load(f) 
-
+text.pop(0)
 id=[]  
 name = []
 rating = []
@@ -21,11 +24,15 @@ for txt in text[:750]:
     episodes.append(txt["episodes"])
     genres.append(txt["genres"])
     duration.append(int(txt["duration"])*int(txt["episodes"]))
-    images.append(txt["image"])
     urls.append(txt["url"])
     count+=1
 
-text.pop(0)
+
+
+for i in range(750):
+    with open(f'static/vendor/anime_images/image_{0}.jpg',"rb") as img:
+        images.append(img.read())
+
 
 try:
     sqlite_connection = sqlite3.connect('db.sqlite3')

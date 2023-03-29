@@ -29,7 +29,7 @@
           </div>
           
         </div>
-        {% comment %} <div class="podborka">
+        <div class="podborka">
           <form  action="{% url 'profile'%}" method ="post">
             {% csrf_token %}
             <div class="buttons">
@@ -81,7 +81,11 @@
                       </div>
                     </div>
                     <hr>
-                    
+                    <div class="delete_anime">
+                      <img class="trash"src="{% static "vendor/images/trash.png"%}">
+                      <input id="yep_delete" type="checkbox">
+                      <label for="yep_delete"></label>
+                    </div>
                   </div>
                   {% else %}
                     
@@ -97,7 +101,9 @@
               <div class="right"></div>
             </button>
           </form>
-        </div> {% endcomment %}
+        </div>
+        <div class="anime_view">Время потраченное на просмотр аниме:</div>
+        <progress min="0" value="{{percents}}" max="100" title="{{value}} минут"></progress>
       </div>
     </div>
     <div class="modal">
@@ -106,7 +112,7 @@
         <form  action="{% url 'profile'%}" method ="post" enctype="multipart/form-data">
           {{form.image}}
           <label for={{form.image.id_for_label}}>
-            <img src={%static "vendor/images/photo.png"%} alt="Image" id="image_user">
+            <img src={%static "vendor/images/photo.png"%} alt="Image" id="image_user" title="Желательно 275x300px">
           </label>
           <div id="preview"></div>
           <span class="delete">Удалить фото</span>

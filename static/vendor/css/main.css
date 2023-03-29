@@ -154,6 +154,7 @@ button {
     position: absolute;
     left: 485px;
     top: 10px;
+    cursor: pointer;
   }
   
 button:hover {

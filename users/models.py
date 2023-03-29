@@ -5,10 +5,11 @@ from first_try.models import Anime
 
 
 class User(AbstractUser):
-    image = models.ImageField(upload_to="users_images", null=True, blank=True)
+    image = models.ImageField(upload_to="static/vendor/users_images", null=True, blank=True)
     username = models.CharField(
         max_length=15,
         unique=True,)
+    favorite_genres = models.CharField(max_length=200,null=True, blank=True)
 
 class UserAnime(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
