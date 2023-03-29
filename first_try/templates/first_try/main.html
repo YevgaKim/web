@@ -65,7 +65,7 @@
           {%for anime in animes %}
             <div class="anime">
               <a href="{{anime.urls}}" target="_blank">
-                <img class="image_anime" src="data:image/jpeg;base64,{{ anime.images.url|get_base64 }}" alt="Anime tyan">
+                <img class="image_anime" src="data:image/jpeg;base64,{{ anime.images|get_base64 }}" alt="Anime tyan">
               </a>
               <div class="block_info">
                 <div class="info">

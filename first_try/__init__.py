@@ -1,0 +1,1 @@
+default_app_config = 'first_try.apps.FirstTryConfig'
