@@ -1,6 +1,6 @@
 {% extends 'first_try/base.html' %}
 {% load static %}
-
+{% load custom_filters %}
 {% block css %}
     <link href="{% static 'vendor/css/main.css' %}" rel="stylesheet">
 {% endblock css %}
@@ -13,7 +13,7 @@
           <a href={% url "registration"%}><div class="nav_button">Registration</div></a>
           <a href={% url "login"%}><div class="nav_button">Login</div></a>
         {% endif %}
-        <a href=""><div class="nav_button">About</div></a>
+        <a href={% url "about"%}><div class="nav_button">About</div></a>
       </div>
 {% endblock nav_block %}
 
@@ -29,7 +29,9 @@
           </button>
           {%if answer%}
             <div class="cont_anime">
-              <a href="{{answer.urls}}" target="_blank"><img class="image_anime1" src="{{answer.images.url}}" alt="Anime tyan"></a>
+              <a href="{{answer.urls}}" target="_blank">
+                <img class="image_anime1" src="data:image/jpeg;base64,{{answer.images|get_base64}}" alt="Anime tyan">
+              </a>
               <div class="info1">
                 <a href="{{answer.urls}}" target="_blank">
                   <h1><b>{{answer.name}}</b></h1>

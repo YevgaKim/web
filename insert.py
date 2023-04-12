@@ -30,8 +30,10 @@ for txt in text[:750]:
 
 
 for i in range(750):
-    with open(f'static/vendor/anime_images/image_{0}.jpg',"rb") as img:
+    with open(f'static/vendor/anime_images/image_{i}.jpg',"rb") as img:
         images.append(img.read())
+        print(f"[INFO] Picture {i}")
+
 
 
 try:

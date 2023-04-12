@@ -2,7 +2,8 @@
 const checkbox = document.querySelector('input[type="checkbox"]'),
       prok1 = document.querySelector(".prokrutka"),
       prok2 = document.querySelector(".prokrutka2"),
-      but = document.querySelector(".but");   
+      but1 = document.querySelector("#but1"),
+      but2 = document.querySelector("#but2");     
 
 
 
@@ -10,11 +11,13 @@ checkbox.addEventListener('change', function() {
   if (this.checked) {
     prok1.style.display = "none";
     prok2.style.display = "block";
-    but.style.display = "none";
+    but1.style.display = "none";
+    but2.style.display = "block"
   } else {
     prok2.style.display = "none";
     prok1.style.display = "block"
-    but.style.display = "block";
+    but1.style.display = "block";
+    but2.style.display = "none"
   }
 });
 //Кнопка добавления фото
@@ -92,15 +95,18 @@ fileInput.addEventListener('change', () => {
   }
 });
 
-const d = document.querySelectorAll(".delete_anime");
+const d = document.querySelectorAll(".delete_anime"),
+      inputs = document.querySelectorAll('.delete_anime input[type="checkbox"]');
 
-for (let i of d){
-  i.addEventListener("click",e=>{
+for (let i = 0; i < d.length && i < inputs.length; i++){
+  d[i].addEventListener("click",e=>{
     e.preventDefault();
-    if (i.style.background == "rgb(166, 0, 12, 0.8)"){
-      i.style.background="none";
+    if (d[i].style.backgroundColor === "rgba(166, 0, 12, 0.8)"){
+      d[i].style.backgroundColor="initial";
+      inputs[i].checked = false;
     } else{
-      i.style.background = "rgb(166, 0, 12, 0.8)";
+      d[i].style.backgroundColor = "rgba(166, 0, 12, 0.8)";
+      inputs[i].checked = true;
     }
 });
 }

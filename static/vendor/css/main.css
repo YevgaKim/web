@@ -46,7 +46,7 @@
 
 .block_info{
     height: 160px;
-    width: 380px;
+    width: 370px;
     position: relative;
     top: -135px;
     left: 150px;
@@ -90,7 +90,7 @@ p {
 
 
 .rectangle1{
-    width:550px;
+    width:40%;
     height:550px;
     background:rgb(170,167,167,0.8);
 	position: absolute;
@@ -99,7 +99,7 @@ p {
 }
 
 .rectangle2{
-    width:559px;
+    width:40%;
     height:550px;
     background:rgb(170,167,167,0.8);
 	position: absolute;
@@ -116,7 +116,7 @@ p {
 }
 
 .face{
-    width: 540px;
+    width: 98.5%;
     height: 100px;
     position: absolute;
     border: #000000 5px solid;
@@ -149,11 +149,11 @@ p {
 button {
     background: none;
     border: none;
-    padding: 10px 10px;
+    padding: 2% 2%;
     border-radius: 10px;
     position: absolute;
-    left: 485px;
-    top: 10px;
+    left: 88%;
+    top: 1.5%;
     cursor: pointer;
   }
   
@@ -163,8 +163,8 @@ button:hover {
   }
   
 .image_anime1{
-    height: 310px;
-    width: 200px;
+    height: 81%;
+    width: 37%;
     position: absolute;
     left: 10px;
 
@@ -179,8 +179,8 @@ button:hover {
 
 .info1{
     position: relative;
-    left: 215px;
-    width: 325px;
+    left: 40%;
+    width: 60%;
     
 }
 
@@ -206,7 +206,7 @@ button:hover {
     margin-top: 10px;
     margin-bottom: 15px;
     position: relative;
-    font-size: 22px;
+    font-size: 24px;
     line-height: 22px;
     text-align: center;
 }
@@ -221,6 +221,7 @@ button:hover {
     margin-bottom: 0px;
     position: relative;
     height: 20px;
+    font-size: 1.8em;
 }
 
 .recom h2{
@@ -275,6 +276,8 @@ button:hover {
 .cont_anime{
     position: absolute;
     top: 75px;
+    width: 99%;
+    height: 67%;
 }
 
 .time{

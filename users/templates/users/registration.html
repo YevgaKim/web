@@ -9,7 +9,7 @@
 {% block nav_block %} 
         <div id="nav_block"> 
           <a href={% url 'main' %}><div class="nav_button">Main</div></a>
-          <a href=""><div class="nav_button">About</div></a>
+          <a href={% url "about"%}><div class="nav_button">About</div></a>
         </div> 
 {% endblock nav_block %}
 

@@ -5,10 +5,7 @@ from first_try.views import *
 from users.views import *
 
 urlpatterns = [
-    path("",main,name="main"),
-    path("profile/", profile,name="profile"),
     path('admin/', admin.site.urls),
-    path("login/",login, name="login"),
-    path("registration/", registration,name="registration"),
-    path('exit/', exit, name='exit')
+    path("", include("first_try.urls")),
+    path("",include("users.urls")),
 ]

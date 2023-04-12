@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .info_about_user{
     position: absolute;
     width: 35%;
@@ -104,7 +105,7 @@
 	background-position: right center;
 }
 
-button {
+.modal button {
     padding: 20px 60px;
     background-color: rgb(43, 41, 41);
     border: none;
@@ -134,7 +135,7 @@ button {
     top: -5px;
 }
 
-button:before {
+.modal button:before {
     content: '';
     position: absolute;
     width: 0%;
@@ -151,50 +152,50 @@ button:before {
         0 0 50px black;
 }
 
-button div {
+.modal button div {
     transition: 300ms;
     position: absolute;
     background-color: black;
     box-shadow: 0 0 15px black, 0 0 30px black, 0 0 50px black;
 }
 
-button .top {
+.modal button .top {
     width: 15px;
     height: 2px;
     top: 0;
     left: 0;
 }
 
-button .bottom {
+.modal button .bottom {
     width: 15px;
     height: 2px;
     bottom: 0;
     right: 0;
 }
 
-button .left {
+.modal button .left {
     width: 2px;
     height: 15px;
     top: 0;
     left: 0;
 }
 
-button .right {
+.modal button .right {
     width: 2px;
     height: 15px;
     bottom: 0;
     right: 0;
 }
 
-button:hover {
+.modal button:hover {
     color: #000;
 }
 
-button:hover span {
+.modal button:hover span {
     color: white;
 }
 
-button:hover:before {
+.modal button:hover:before {
     width: 100%;
     height: 100%;
     top: 0;
@@ -203,13 +204,13 @@ button:hover:before {
     bottom: 0;
 }
 
-button:hover .top, 
-button:hover .bottom {
+.modal button:hover .top, 
+.modal button:hover .bottom {
     width: 100%;
 }
 
-button:hover .left,
-button:hover .right {
+.modal button:hover .left,
+.modal button:hover .right {
     height: 100%;
 }
 
@@ -420,8 +421,8 @@ button:hover .right {
     border: none;
     font-size: 18px;
     position: absolute;
-    left: 155px;
-    top: 437px;
+    left: 130px;
+    top: 377px;
     /* overflow: hidden; */
     transition: 300ms;
     width: 285px;
@@ -431,6 +432,9 @@ button:hover .right {
     cursor: pointer;
 }
 
+#but2{
+    display: none;
+}
 .span_bt2{
     color: gray;
     position: relative;
@@ -622,18 +626,18 @@ input:checked + .slider:after {
     height: 500px;
     background-color:rgb(170,167,167,0.9);
     position: absolute;
-    top:50px;
-    left: 480px;
+    top:15%;
+    left: 35%;
 }
 
 @font-face {
 	font-family: 'koliko Regular';
-	src: url('static/vendor/fonts/koliko_regular.eot'); /* IE 9 Compatibility Mode */
-	src: url('static/vendor/fonts/koliko_regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
-		url('static/vendor/fonts/koliko_regular.woff2') format('woff2'), /* Super Modern Browsers */
-		url('static/vendor/fonts/koliko_regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('static/vendor/fonts/koliko_regular.ttf') format('truetype'), /* Safari, Android, iOS */
-		url('static/vendor/fonts/koliko_regular.svg#koliko_regular') format('svg'); /* Chrome < 4, Legacy iOS */
+	src: url('static/vendor/fonts/koliko_regular.eot'); 
+	src: url('static/vendor/fonts/koliko_regular.eot?#iefix') format('embedded-opentype'), 
+		url('static/vendor/fonts/koliko_regular.woff2') format('woff2'), 
+		url('static/vendor/fonts/koliko_regular.woff') format('woff'),  
+		url('static/vendor/fonts/koliko_regular.ttf') format('truetype'), 
+		url('static/vendor/fonts/koliko_regular.svg#koliko_regular') format('svg'); 
 }
 
 .closeModal{
@@ -743,29 +747,26 @@ progress::after {
 }
 
 .delete_anime{
+    width: 30px;
+    height: 30px;
     position: absolute;
-    top: 155px;
-    left: 450px;
+    top: 157px;
+    left: 453px;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
-    background: none;
+    background-image: url(../images/trash.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+    background-color: transparent;
 }
-
-.trash{
-    width: 30px;
-    height: 30px;
-}
-
 
 
 .delete_anime input[type="checkbox"] {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    opacity: 0;
-    cursor: pointer;
+    top: -9999px;
+    left: -9999px;
 }
   
 .delete_anime label {
@@ -774,6 +775,47 @@ progress::after {
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: 0;
     cursor: pointer;
+}
+
+.pages{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page{
+    display: inline-block;
+    background-color: rgb(43, 41, 41);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border: rgb(170,167,167) 2px solid;
+    cursor: pointer;
+    align-items: center;
+}
+
+.page:hover{
+    background-color: rgb(170,167,167);
+    color: black;
+    border-color: rgb(43, 41, 41);
+}
+
+.selected_page{
+    display: inline-block;
+    background-color: rgb(170,167,167);
+    color: black;
+    width: 35px;
+    height: 35px;
+    border: rgb(43, 41, 41) 2px solid;
+    cursor: pointer;
+    align-items: center;
+}
+
+
+.number{
+    margin-top: 7px;
 }
