@@ -21,8 +21,8 @@
           <p class="text_start_reg"><b>Registration</b></p>
           <form class="form_reg" action="{% url 'registration'%}" method ="post">  
             {% csrf_token %} 
-             {{form.username}}   
-            {{form.email}} 
+              {{form.username}}   
+              {{form.email}} 
             <div class="password">
               {{form.password1}} 
               <a  href="" class="password-control" id="b2"><img src={% static 'vendor/images/eye.png' %}></a>
@@ -41,17 +41,21 @@
             </button>   
             
             <em class="help2">Есть аккаунт?</em><a href={% url 'login' %}>Войти</a>
-            {% if error_exists %}
-              <div class="error_invalid"><div class="text_error">Ник уже используется</div></div>
-            {% elif error_toocommon%}
-              <div class="error_invalid"><div class="text_error">Пароль слишком простой</div></div>
-            {% elif error_similiar%}
-              <div class="error_invalid"><div class="text_error">Пароли не совпадают</div></div>
-            {% elif error_similiar_pass_username%}
-              <div class="error_invalid"><div class="text_error">Пароль и ник слишком похожие</div></div>
-            {% elif error_toomuchwords%}
-              <div class="error_invalid"><div class="text_error">Ник содержит более 15 символов</div></div>
-            {% endif %}
+              {% if errors.username.0 == "USER with this Username already exists." %}
+                <div class="error_invalid"><div class="text_error">Ник уже используется</div></div>
+              {% elif errors.password2.0 == "This password is too common."%}
+                <div class="error_invalid"><div class="text_error">Пароль слишком простой</div></div>
+              {% elif errors.password2.0 == "This password is too short. It must contain at least 8 characters."%}
+                <div class="error_invalid"><div class="text_error">Пароль слишком короткий</div></div>
+              {% elif errors.password2.0 == "The two password fields didn’t match."%}
+                <div class="error_invalid"><div class="text_error">Пароли не совпадают</div></div>
+              {% elif errors.password2.0 == "The password is too similar to the username."%}
+                <div class="error_invalid"><div class="text_error">Пароль и ник слишком похожие</div></div>
+              {% elif "Ensure this value has at most 15 characters" in errors.username.0 %}
+                <div class="error_invalid"><div class="text_error">Ник содержит более 15 символов</div></div>
+              {% elif errors.email.0 == "Enter a valid email address." %}
+                <div class="error_invalid"><div class="text_error">Введите корректный имейл адресс</div></div>
+              {% endif %}
             
           </form>
           

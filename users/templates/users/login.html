@@ -37,7 +37,7 @@
             </button>
               
             <div class="help"><em>Нет аккаунта? </em><a href={% url 'registration' %}>Зарегистрироваться</a></div>
-            {% if error_invalid %}
+            {% if "Please enter a correct username and password. Note that both fields may be case-sensitive." in errors%}
               <div class="error_invalid"><div class="text_error">Неверно введено ник или пароль</div></div>
             {% endif %}
           </form>

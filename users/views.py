@@ -1,69 +1,48 @@
 from django.contrib import auth
 from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
 from django.shortcuts import HttpResponseRedirect, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.views import View
+from django.views.generic.edit import CreateView
 
 from first_try.models import Anime
 from users.forms import UserLoginForm, UserRegistrationForm
 from users.models import UserAnime
 
 
-def login(request):
-    error_invalid=False
-    if request.method =="POST":
-        form = UserLoginForm(data=request.POST)
-        if form.is_valid():
-            username = request.POST["username"]
-            password = request.POST["password"]
-            user = auth.authenticate(username=username,password = password)
-            if user:
-                auth.login(request,user)
-                return HttpResponseRedirect(reverse("main"))
-        else:
-            if form.error_messages['invalid_login']=='Please enter a correct %(username)s and password. Note that both fields may be case-sensitive.':
-                error_invalid = True
-    else:
-        form = UserLoginForm()
-    context = {"form": form,
-                "error_invalid": error_invalid,}
-    return render(request,"users/login.html", context)
+class LoginUser(LoginView):
+    template_name = 'users/login.html'
+    form_class = UserLoginForm 
+    next_page = "main"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['errors'] = str(self.get_form().errors)
+
+        return context
 
 
 
-def registration(request):
-    error_exists = False
-    error_toocommon = False
-    error_similiar = False
-    error_similiar_pass_username = False
-    error_toomuchwords = False
-    if request.method =="POST":
-        form = UserRegistrationForm(data=request.POST)
+class RegistrationView(CreateView):
+    template_name = 'users/registration.html'
+    form_class = UserRegistrationForm
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(data=request.POST)
         if form.is_valid():
             new_user = form.save()
             UserAnime.objects.get_or_create(user=new_user)
             return HttpResponseRedirect(reverse("login"))
         else:
-            for k in form.errors:
-                if form.errors[k][0]=="A user with that username already exists.":
-                    error_exists=True   
-                elif form.errors[k][0]=="This password is too common.":
-                    error_toocommon=True
-                elif form.errors[k][0]=="The two password fields didn’t match.":
-                    error_similiar=True 
-                elif form.errors[k][0]=="The password is too similar to the username.": 
-                    error_similiar_pass_username=True
-                elif "Ensure this value has at most 15 characters" in form.errors[k][0]:
-                    error_toomuchwords= True
-                print(form.errors[k][0])
-    else:
-        form = UserRegistrationForm()
-    context = {"form": form,
-                "error_exists": error_exists,
-                "error_toocommon": error_toocommon,
-                "error_similiar": error_similiar,
-                "error_similiar_pass_username":error_similiar_pass_username,
-                "error_toomuchwords":error_toomuchwords,}
-    return render(request,"users/registration.html",context)
+            for i in form.errors:
+                print(form.errors[i][0])
+
+        context = {"form": form,
+                "errors":form.errors,}
+        return render(request, self.template_name, context)
+    
+
 
 def exit(request):
     logout(request)

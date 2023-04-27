@@ -9,3 +9,4 @@ register = template.Library()
 def get_base64(content):
     encoded = base64.b64encode(content)
     return encoded.decode('utf-8')
+

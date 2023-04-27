@@ -30,20 +30,19 @@
           
         </div>
         <div class="podborka">
-          <form  action="{% url 'profile'%}" method ="post">
-            {% csrf_token %}
             <div class="buttons">
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-              </label>
+              <form action="{% url 'profile'%}" method ="post">    
+                <label class="switch">
+                  <input type="checkbox" {{ c }}>
+                  <span class="slider"></span>
+                </label>
+              </form>
             </div>
             <div class="frame">
+              <form  action="{% url 'profile'%}" method ="post">
+                {% csrf_token %}
               <div class="prokrutka">
-                {%for anime in unviewed_animes %}
-                  {% if anime.id in user_anime_ids %}
-
-                  {% else %}
+                {%for anime in page_unviewed_animes %}
                     <div class="anime">
                       <a href="{{anime.urls}}" target="_blank">
                         <img class="image_anime" src="data:image/jpeg;base64,{{anime.images|get_base64}}" alt="Anime tyan">
@@ -59,23 +58,29 @@
                         </div>
                       </div>
                       <hr>
-                      <div class="checkbox-apple">
+                      <div class="checkbox-apple" title="Посмотрел">
                         <input class="yep" id ="{{anime.id}}" name="anime_unviewed" value="{{anime.id}}" type="checkbox">
                         <label for="{{anime.id}}"></label>
                       </div>
                     </div>
-                  {% endif %}
                 {% endfor %}
-                
-                <div class="pages">
-                  {% for i in unviewed_pages%}
-                    {% if ' ' in i%}
-                      <a href="{% url 'profile' view='unviewed' page=i%}"><div class="selected_page"><p class="number">{{i}}</p></div></a>
-                    {%else %}
-                      <a href="{% url 'profile' view='unviewed' page=i%}"><div class="page"><p class="number">{{i}}</p></div></a>
-                    {%endif%}
-                  {%endfor%}
-                </div>
+                {% if page_unviewed_animes.has_other_pages %}
+                  <div class="pages">
+                    {% if page_unviewed_animes.has_previous %}
+                      <a href="?page_unviewed={{ page_unviewed_animes.previous_page_number }}"><div class="page"><p class="number">&lt;</p></div></a>
+                    {% endif %}
+                    {% for p in page_unviewed_animes.paginator.page_range%}
+                      {% if page_unviewed_animes.number == p%}
+                        <a href="?page_unviewed={{ p }}"><div class="selected_page"><p class="number">{{ p }}</p></div></a>
+                      {% elif p >= page_unviewed_animes.number|add:-2 and p <= page_unviewed_animes.number|add:2 %}
+                        <a href="?page_unviewed={{ p }}"><div class="page"><p class="number">{{ p }}</p></div></a>
+                      {% endif %}
+                    {% endfor %}
+                    {% if page_unviewed_animes.has_next %}
+                      <a href="?page_unviewed={{ page_unviewed_animes.next_page_number }}"><div class="page"><p class="number">&gt;</p></div></a>
+                    {% endif %}
+                  </div>
+                {% endif %}
               </div>
               <button class="but" id="but1">
                 <span class="span_bt2">Send</span>
@@ -88,8 +93,7 @@
               <form  action="{% url 'profile'%}" method ="post">
                 {% csrf_token %}
                 <div class="prokrutka2">
-                  {%for anime in viewed_animes %}
-                    {% if anime.id in user_anime_ids %}
+                  {%for anime in page_viewed_animes %}
                     <div class="anime">
                       <a href="{{anime.urls}}" target="_blank">
                         <img class="image_anime" src="data:image/jpeg;base64,{{anime.images|get_base64}}" alt="Anime tyan">
@@ -105,24 +109,29 @@
                         </div>
                       </div>
                       <hr>
-                      <div class="delete_anime">
+                      <div class="delete_anime" title="Удалить">
                         <input id ="{{anime.id}}" name="anime_viewed" value="{{anime.id}}" type="checkbox">
                         <label for="{{anime.id}}"></label>
                       </div>
                     </div>
-                    {% else %}
-                      
-                    {% endif %}
                   {% endfor %}
+                  {% if page_viewed_animes.has_other_pages %}
                   <div class="pages">
-                    {% for i in viewed_pages%}
-                      {% if ' ' in i%}
-                        <a href="{% url 'profile' view='viewed' page=i%}"><div class="selected_page"><p class="number">{{i}}</p></div></a>
-                      {%else %}
-                        <a href="{% url 'profile' view='viewed' page=i%}"><div class="page"><p class="number">{{i}}</p></div></a>
-                      {%endif%}
-                    {%endfor%}
+                    {% if page_viewed_animes.has_previous %}
+                      <a href="?page_viewed={{ page_viewed_animes.previous_page_number }}"><div class="page"><p class="number">&lt;</p></div></a>
+                    {% endif %}
+                    {% for p in page_viewed_animes.paginator.page_range%}
+                      {% if page_viewed_animes.number == p%}
+                        <a href="?page_viewed={{ p }}"><div class="selected_page"><p class="number">{{ p }}</p></div></a>
+                      {% elif p >= page_viewed_animes.number|add:-2 and p <= page_viewed_animes.number|add:2 %}
+                        <a href="?page_viewed={{ p }}"><div class="page"><p class="number">{{ p }}</p></div></a>
+                      {% endif %}
+                    {% endfor %}
+                    {% if page_viewed_animes.has_next %}
+                      <a href="?page_viewed={{ page_viewed_animes.next_page_number }}"><div class="page"><p class="number">&gt;</p></div></a>
+                    {% endif %}
                   </div>
+                {% endif %}
                 </div>
                 <button class="but" id="but2">
                   <span class="span_bt2">Delete</span>

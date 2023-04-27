@@ -6,18 +6,29 @@ const checkbox = document.querySelector('input[type="checkbox"]'),
       but2 = document.querySelector("#but2");     
 
 
-
+console.log(checkbox.checked);
+if (checkbox.checked){
+  prok1.style.display = "none";
+  prok2.style.display = "block";
+  but1.style.display = "none";
+  but2.style.display = "block";
+} else {
+  prok2.style.display = "none";
+  prok1.style.display = "block"
+  but1.style.display = "block";
+  but2.style.display = "none";
+}
 checkbox.addEventListener('change', function() {
   if (this.checked) {
     prok1.style.display = "none";
     prok2.style.display = "block";
     but1.style.display = "none";
-    but2.style.display = "block"
+    but2.style.display = "block";
   } else {
     prok2.style.display = "none";
     prok1.style.display = "block"
     but1.style.display = "block";
-    but2.style.display = "none"
+    but2.style.display = "none";
   }
 });
 //Кнопка добавления фото

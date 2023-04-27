@@ -1,6 +1,7 @@
 {% extends 'first_try/base.html' %}
 {% load static %}
 {% load custom_filters %}
+{% load cache %}
 {% block css %}
     <link href="{% static 'vendor/css/main.css' %}" rel="stylesheet">
 {% endblock css %}
@@ -24,7 +25,7 @@
       <div class="answer">
         <form class="form_log" action="{% url 'main'%}" method="get">
           <input class="inputs" placeholder="Введите название аниме" required="" type="text" name="search">
-          <button>
+          <button title="Поиск">
             <img src={%static "vendor/images/lupa.png"%}>
           </button>
           {%if answer%}
@@ -64,6 +65,7 @@
         <hr>
       </div>
       <div class="prokrutka">
+        {% cache 60 sidebar %}
           {%for anime in animes %}
             <div class="anime">
               <a href="{{anime.urls}}" target="_blank">
@@ -82,6 +84,7 @@
               <hr>
             </div>
           {% endfor %}
+        {% endcache %}
       </div>
     </div>
   </div>
