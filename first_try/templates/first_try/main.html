@@ -31,7 +31,7 @@
           {%if answer%}
             <div class="cont_anime">
               <a href="{{answer.urls}}" target="_blank">
-                <img class="image_anime1" src="data:image/jpeg;base64,{{answer.images|get_base64}}" alt="Anime tyan">
+                <img class="image_anime1" src="{{answer.images.url}}" alt="Anime tyan">
               </a>
               <div class="info1">
                 <a href="{{answer.urls}}" target="_blank">
@@ -69,7 +69,7 @@
           {%for anime in animes %}
             <div class="anime">
               <a href="{{anime.urls}}" target="_blank">
-                <img class="image_anime" src="data:image/jpeg;base64,{{ anime.images|get_base64 }}" alt="Anime tyan">
+                <img class="image_anime" src="{{anime.images.url}}" alt="Anime tyan">
               </a>
               <div class="block_info">
                 <div class="info">
