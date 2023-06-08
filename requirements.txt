@@ -4,3 +4,5 @@ Django
 requests
 Pillow
 psycopg2
+django-environ
+gunicorn

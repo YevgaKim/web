@@ -1,5 +1,4 @@
 
-import tkinter
 
 class Node():
     def __init__(self, value=None,next=None):
@@ -37,31 +36,34 @@ class ListNode():
 
 
     def reverse(self):
-        h = self.head
-        lst = [h]
-        while h.next !=None:
-            h = h.next
-            lst.append(h)
+        if self.length>1:
+            h = self.head
+            lst = [h]
+            while h.next !=None:
+                h = h.next
+                lst.append(h)
 
-        # lst.reverse()
+            # lst.reverse()
 
-        lst[-1].next = lst[-2]
-        self.head = lst[-1]
-        lst[0].next = None
-        for i in range(1,len(lst)):
-            try:
-                lst[-i].next = lst[-i-1]
-            except:
-                break
+            lst[-1].next = lst[-2]
+            self.head = lst[-1]
+            lst[0].next = None
+            for i in range(1,len(lst)):
+                try:
+                    lst[-i].next = lst[-i-1]
+                except:
+                    break
+        
+            
         
 
 
 
 
-l = ListNode()
+a = ListNode()
 
-for i in range(100):
-    l.add(i)
-print(l)
-l.reverse()
-print(l)
+a.add(1)
+a.add(2)
+print(a)
+a.reverse()
+print(a)
