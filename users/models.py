@@ -5,7 +5,7 @@ from first_try.models import Anime
 
 
 class User(AbstractUser):
-    image = models.ImageField(upload_to="static/vendor/users_images", null=True, blank=True,verbose_name="IMAGE URL")
+    image = models.ImageField(upload_to="static/vendor/users_images/", null=True, blank=True,verbose_name="IMAGE URL")
     username = models.CharField(
         max_length=15,
         unique=True,)

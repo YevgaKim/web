@@ -28,9 +28,10 @@ for txt in text[:750]:
 
 
 try:
-    conn = psycopg2.connect(database="Anitiming", user="YevgaKim", password="mydbforanitiming", host="127.0.0.1", port="5432")
+    conn = psycopg2.connect(database="postgres", user="YevgaKim", password="mydbforanitiming",host="postgres",port="5432")
     print("Успешно подключено к PostgreSQL")
     cur = conn.cursor()
+    count=0
     for id2, name2, rating2, episodes2, duration2, genres2, image2, url2 in zip(id, name, rating, episodes, duration, genres, images, urls):
         postgres_insert_query = """INSERT INTO first_try_anime 
                                 (id, name, rating, episodes, duration, genres, images, urls) 
@@ -41,8 +42,7 @@ try:
         cur.execute(postgres_insert_query, record_to_insert)
         conn.commit()
 
-        count = cur.rowcount
-        print(count, "строк добавлено в таблицу")
+        print(count++, "строк добавлено в таблицу")
 
     cur.close()
     conn.close()
