@@ -1,43 +1,24 @@
-version: '3.9'
+build:
+  docker:
+    web: Dockerfile
 
-services:
-  anitiming:
-    build: .
-    restart: always
-    container_name: anitiming
-    ports:
-      - "8000:8000"
-    volumes:
-      - static:/var/www/static
-    env_file:
-      - .env
-    depends_on:
-     - db
-  db:
+release:
+    heroku_version: 21
+
+dependencies:
+  - name: db
     image: postgres:15
-    restart: always
-    container_name: postgres
-    ports:
-      - "5432:5432"
-    env_file:
-      - .env
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-  nginx:
+  - name: nginx
     build:
       context: ./nginx
-    container_name: nginx
-    restart: always
-    volumes:
-      - static:/var/www/static
-    ports:
-      - "80:80"
-    depends_on:
-      - anitiming
 
+env:
+  - name: DATABASE_URL
+    value: postgres://postgres:postgres@localhost:5432/anitiming
 
+ports:
+  - name: http
+    container_port: 80
+    host_port: 80
 
-
-volumes:
-  postgres_data:
-  static:
+restart: always
