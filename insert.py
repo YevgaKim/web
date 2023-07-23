@@ -42,7 +42,7 @@ try:
         cur.execute(postgres_insert_query, record_to_insert)
         conn.commit()
 
-        print(count++, "строк добавлено в таблицу")
+        print(count, "строк добавлено в таблицу")
 
     cur.close()
     conn.close()
